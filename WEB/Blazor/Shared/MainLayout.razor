@@ -9,8 +9,20 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+                <AuthorizeView>
+                <Authorized>
+                    <span class="ml-md-auto">
+                        Usuario Conectado: @context.User.Claims.First().Value
+                        <a href="/Salir">Salir</a>
+                    </span>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="Login" style="font-size:24px; font-weight:700" class="ml-md-auto">Iniciar Sesión</a>
+                </NotAuthorized>
+
+            </AuthorizeView>
         </div>
+
 
         <article class="content px-4">
             @Body
