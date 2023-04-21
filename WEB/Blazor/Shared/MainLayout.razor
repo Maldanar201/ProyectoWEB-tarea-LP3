@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<PageTitle>Blazor</PageTitle>
+<PageTitle>Lenguaje 3</PageTitle>
 
 <div class="page">
     <div class="sidebar">
@@ -9,7 +9,7 @@
 
     <main>
         <div class="top-row px-4">
-                <AuthorizeView>
+            <AuthorizeView>
                 <Authorized>
                     <span class="ml-md-auto">
                         Usuario Conectado: @context.User.Claims.First().Value
@@ -22,7 +22,6 @@
 
             </AuthorizeView>
         </div>
-
 
         <article class="content px-4">
             @Body
