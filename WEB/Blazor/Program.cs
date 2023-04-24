@@ -13,6 +13,7 @@ Config cadena = new Config(builder.Configuration.GetConnectionString("MySQL"));
 builder.Services.AddSingleton(cadena);
 
 builder.Services.AddScoped<ILoginServicio, LoginServicio>();
+builder.Services.AddScoped<IClienteServicio, LoginServicio>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddHttpContextAccessor();
 
