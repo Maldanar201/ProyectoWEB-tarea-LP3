@@ -1,6 +1,7 @@
 ﻿using Blazor.Interfaces;
 using Blazor.Servicios;
 using CurrieTechnologies.Razor.SweetAlert2;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Components;
 using Modelos;
 
@@ -23,6 +24,8 @@ namespace Blazor.Pages.MisClientes
                 return;
             }
 
+            cliente.FechaCreacion = DateTime.Now;
+
             Cliente clienExistente = new Cliente();
             clienExistente = await clienteServicio.GetPorIdentidadAsync(cliente.Identidad);
 
@@ -33,14 +36,16 @@ namespace Blazor.Pages.MisClientes
             }
 
             cliente.FechaCreacion = DateTime.Now;
+
             bool inserto = await clienteServicio.NuevoAsync(cliente);
             if (inserto)
             {
-                await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
+                await Swal.FireAsync("Error", "El Cliente no se pudo Guardar", SweetAlertIcon.Error);
             }
             else
-            {
-                await Swal.FireAsync("Error", "El Cliente no se pudo Guardar", SweetAlertIcon.Error);
+            {                
+                await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
+                navigationManager.NavigateTo("/Clientes");
             }
         }
 

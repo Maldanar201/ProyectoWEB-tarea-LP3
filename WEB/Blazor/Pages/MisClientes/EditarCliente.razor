@@ -1,18 +1,18 @@
-﻿@page "/Clientes/Editar/{Identidad}"
+﻿@page "/Clientes/EditarCliente/{Identidad}"
 
 <AuthorizeView Roles="Administrador, Usuario">
     <Authorized Context="AuthenticationState">
         <h3>Editar Cliente</h3>
-
         <EditForm Model="@cliente">
             <DataAnnotationsValidator />
             <div class="form-group row">
                 <label for="Identidad" class="col-sm-2 col-form-label">
-                    Identidad Cliente
+                    Identidad
                 </label>
+
                 <div class="col-sm-10">
                     <label for="Identidad" class="col-sm-2 col-form-label">
-                        Identidad Cliente
+                        @cliente.Identidad
                     </label>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     Telefono Cliente
                 </label>
                 <div class="col-sm-10">
-                    <InputNumber id="Telefono" class="form-control" @bind-Value="cliente.Telefono" />
+                    <InputText id="Telefono" class="form-control" @bind-Value="cliente.Telefono" />
                     <ValidationMessage For="@(() => cliente.Telefono)" />
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 </label>
                 <div class="col-sm-10">
                     <label for="FechaCreacion" class="col-form-label">
-                        @cliente.FechaCreacion.ToShortDateString()
+                        @cliente.FechaNacimiento.ToShortDateString()
                     </label>
                 </div>
             </div>

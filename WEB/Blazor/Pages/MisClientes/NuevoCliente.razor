@@ -11,7 +11,7 @@
                     Identidad Cliente
                 </label>
                 <div class="col-sm-10">
-                    <InputNumber id="Identidad" class="form-control" @bind-Value="cliente.Identidad" />
+                    <InputText id="Identidad" class="form-control" @bind-Value="cliente.Identidad" />
                     <ValidationMessage For="@(() => cliente.Identidad)" />
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     Telefono Cliente
                 </label>
                 <div class="col-sm-10">
-                    <InputNumber id="Telefono" class="form-control" @bind-Value="cliente.Telefono" />
+                    <InputText id="Telefono" class="form-control" @bind-Value="cliente.Telefono" />
                     <ValidationMessage For="@(() => cliente.Telefono)" />
                 </div>
             </div>

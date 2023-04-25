@@ -24,6 +24,7 @@ namespace Modelos
         {
 
         }
+
         public Cliente(string identidad, string nombre, string telefono, string correo, string direccion, DateTime fechaCreacion, bool estaActivo)
         {
             Identidad = identidad;

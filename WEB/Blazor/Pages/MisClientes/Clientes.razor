@@ -35,10 +35,9 @@
                             <th>@cliente.Identidad</th>
                             <th>@cliente.Nombre</th>
                             <th>@cliente.Telefono</th>
-                            <th>@cliente.Correo</th>
-                            <th>@cliente.</th>
+                            <th>@cliente.Correo</th>                            
                             <th>@cliente.Direccion</th>
-                            <th>@cliente.FechaCreacion</th>
+                            <th>@cliente.FechaNacimiento</th>
                             @if (cliente.EstaActivo)
                             {
                                 <th>
@@ -52,7 +51,7 @@
                                 </th>
                             }
                             <th>
-                                <a class="btn btn-success" href="@($"/Clientes/Editar/{cliente.Identidad}")">Editar</a>
+                                <a class="btn btn-success" href="@($"/Clientes/EditarCliente/{cliente.Identidad}")">Editar</a>
                             </th>
                         </tr>
                     }

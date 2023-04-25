@@ -12,9 +12,17 @@ namespace Blazor.Pages.MisClientes
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private SweetAlertService Swal { get; set; }
 
-        Cliente cliente = new Cliente();
+        private Cliente cliente = new Cliente();
 
         [Parameter] public string Identidad { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            if (!string.IsNullOrEmpty(Identidad))
+            {
+                cliente = await clienteServicio.GetPorIdentidadAsync(Identidad);
+            }
+        }
 
         protected async Task Guardar()
         {
@@ -23,7 +31,7 @@ namespace Blazor.Pages.MisClientes
                 return;
             }
 
-            bool edito = await clienteServicio.NuevoAsync(cliente);
+            bool edito = await clienteServicio.ActualizarAsync(cliente);
             if (edito)
             {
                 await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
