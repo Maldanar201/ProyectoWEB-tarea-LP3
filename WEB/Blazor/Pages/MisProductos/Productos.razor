@@ -1,0 +1,75 @@
+﻿@page "/Productos"
+@using Modelos;
+
+<AuthorizeView Roles="Administrador">
+    <Authorized Context="AuthenticationState">
+        <h3>Lista de Productos</h3>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <a href="/Productos/NuevoProductos" class="btn btn-primary m-2">Nuevo</a>
+            </div>
+        </div>
+
+        @if (listaProductos == null)
+        {
+            <p>No existen productos en el sistema</p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Existencia</th>
+                        <th>Precio</th>
+                        <th>Foto</th>
+                        <th>EstaActivo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (Producto prod in listaProductos)
+                    {
+                        <tr>
+                            <th>@prod.Codigo</th>
+                            <th>@prod.Descripcion</th>
+                            <th>@prod.Existencia</th>
+                            <th>@prod.Precio</th>
+                            @if (prod.Foto != null)
+                            {
+                                <th>
+                                    <img width="40" height="40" src="data:image;base64,@System.Convert.ToBase64String(prod.Foto)" />
+                                </th>
+                            }
+                            else
+                            {
+                                <th></th>
+                            }
+                            @if (prod.EstaActivo)
+                            {
+                                <th>
+                                    <span class="oi oi-circle-check " style="color:green;"></span>
+                                </th>
+                            }
+                            else
+                            {
+                                <th>
+                                    <span class="oi oi-circle-x" style="color:red;"></span>
+                                </th>
+                            }
+                            <th>
+                                <a class="btn btn-success" href="@($"/Productos/EditarProductos/{prod.Codigo}")">Editar</a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </Authorized>
+    <NotAuthorized>
+        <h3>No Tiene Permiso Para Esta Ruta</h3>
+    </NotAuthorized>
+</AuthorizeView>
