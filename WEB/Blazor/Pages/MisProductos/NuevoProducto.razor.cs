@@ -43,7 +43,7 @@ namespace Blazor.Pages.MisProductos
             {
                 if (!string.IsNullOrEmpty(prodExistente.Codigo))
                 {
-                    await sweetAlertService.FireAsync("Advertencia", "Ya Existe un Producto con el Mismo Codigo", SweetAlertIcon.Warning);
+                    await sweetAlertService.FireAsync("Advertencia", "Ya existe un producto con el mismo código", SweetAlertIcon.Warning);
                     return;
                 }
             }
@@ -52,12 +52,12 @@ namespace Blazor.Pages.MisProductos
 
             if (inserto)
             {
-                await sweetAlertService.FireAsync("Atencion", "Producto Guardado", SweetAlertIcon.Success);
+                await sweetAlertService.FireAsync("Éxito", "Producto Guardado", SweetAlertIcon.Success);
                 navigationManager.NavigateTo("/Productos");
             }
             else
             {
-                await sweetAlertService.FireAsync("Error", "No Se Pudo Guardar El Producto", SweetAlertIcon.Error);
+                await sweetAlertService.FireAsync("Error", "No se pudo guardar el producto", SweetAlertIcon.Error);
             }
         }
         protected async void Cancelar()

@@ -1,5 +1,4 @@
 ﻿using Blazor.Interfaces;
-using Blazor.Servicios;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
 using Modelos;
@@ -34,11 +33,11 @@ namespace Blazor.Pages.MisClientes
             bool edito = await clienteServicio.ActualizarAsync(cliente);
             if (edito)
             {
-                await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
+                await Swal.FireAsync("Realizado", "Cliente guardado exitosamente", SweetAlertIcon.Success);
             }
             else
             {
-                await Swal.FireAsync("Error", "El Cliente no se pudo Guardar", SweetAlertIcon.Error);
+                await Swal.FireAsync("Error", "El cliente no se pudo guardar", SweetAlertIcon.Error);
             }
         }
 
@@ -53,11 +52,12 @@ namespace Blazor.Pages.MisClientes
 
             SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
             {
-                Title = "¿Seguro que desea eliminar el Cliente?",
+                Title = "¿Seguro que desea eliminar el Cliente seleccionado?",
+                Text = "Esta acción no se podrá revertir",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true,
-                ConfirmButtonText = "Aceptar",
-                CancelButtonText = "Cancelar",
+                ConfirmButtonText = "Sí",
+                CancelButtonText = "No",
             });
 
             if (!string.IsNullOrEmpty(result.Value))
@@ -66,12 +66,12 @@ namespace Blazor.Pages.MisClientes
 
                 if (elimino)
                 {
-                    await Swal.FireAsync("Felicidades", "El Cliente se Elimino", SweetAlertIcon.Success);
+                    await Swal.FireAsync("Realizado", "El Cliente ha sido eliminado", SweetAlertIcon.Success);
                     navigationManager.NavigateTo("/Clientes");
                 }
                 else
                 {
-                    await Swal.FireAsync("Error", "El Cliente No pudo ser Eliminado", SweetAlertIcon.Error);
+                    await Swal.FireAsync("Error", "No se pudo eliminar el cliente", SweetAlertIcon.Error);
                 }
             }
 

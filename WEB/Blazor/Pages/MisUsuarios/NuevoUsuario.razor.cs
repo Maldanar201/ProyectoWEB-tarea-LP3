@@ -42,12 +42,12 @@ namespace Blazor.Pages.MisUsuarios
 
             if (inserto)
             {
-                await sweetAlertService.FireAsync("Felicidades", "Usuario Guardado", SweetAlertIcon.Success);
+                await sweetAlertService.FireAsync("Éxito", "Usuario Guardado", SweetAlertIcon.Success);
 
             }
             else
             {
-                await sweetAlertService.FireAsync("Error", "No Se Pudo Guardar El Usuario", SweetAlertIcon.Error);
+                await sweetAlertService.FireAsync("Error", "No se pudo guardar el usuario", SweetAlertIcon.Error);
             }
 
         }

@@ -46,12 +46,12 @@ namespace Blazor.Pages.MisProductos
 
             if (edito)
             {
-                await sweetAlertService.FireAsync("Felicidades", "Producto Actualizado", SweetAlertIcon.Success);
+                await sweetAlertService.FireAsync("Realizado", "Producto Actualizado", SweetAlertIcon.Success);
                 navigationManager.NavigateTo("/Productos");
             }
             else
             {
-                await sweetAlertService.FireAsync("Error", "No Se Pudo Actualizar El Producto", SweetAlertIcon.Error);
+                await sweetAlertService.FireAsync("Error", "No se pudo actualizar el producto", SweetAlertIcon.Error);
             }
         }
         protected async void Cancelar()
@@ -63,11 +63,12 @@ namespace Blazor.Pages.MisProductos
         {
             SweetAlertResult result = await sweetAlertService.FireAsync(new SweetAlertOptions
             {
-                Title = "¿Seguro que Desea Eliminar el Producto?",
+                Title = "¿Seguro que desea eliminar el producto seleccionado?",
+                Text = "Esta acción no se podrá revertir",
                 Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true,
-                ConfirmButtonText = "Aceptar",
-                CancelButtonText = "Cancelar"
+                ConfirmButtonText = "Sí",
+                CancelButtonText = "No"
             });
 
             if (!string.IsNullOrEmpty(result.Value))
@@ -76,12 +77,12 @@ namespace Blazor.Pages.MisProductos
 
                 if (elimino)
                 {
-                    await sweetAlertService.FireAsync("Felicidades", "Producto Eliminado", SweetAlertIcon.Success);
+                    await sweetAlertService.FireAsync("Realizado", "El producto ha sido eliminado", SweetAlertIcon.Success);
                     navigationManager.NavigateTo("/Productos");
                 }
                 else
                 {
-                    await sweetAlertService.FireAsync("Error", "No Se Pudo Eliminar El Producto", SweetAlertIcon.Error);
+                    await sweetAlertService.FireAsync("Error", "No se Pudo eliminar el producto", SweetAlertIcon.Error);
                 }
             }
         }

@@ -1,7 +1,5 @@
 ﻿using Blazor.Interfaces;
-using Blazor.Servicios;
 using CurrieTechnologies.Razor.SweetAlert2;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Components;
 using Modelos;
 
@@ -31,7 +29,7 @@ namespace Blazor.Pages.MisClientes
 
             if (clienExistente == null)
             {
-                await Swal.FireAsync("Advertencia", "Ya esiste un Cliente con el mismo numero de Identidad", SweetAlertIcon.Warning);
+                await Swal.FireAsync("Advertencia", "Ya esiste un cliente con el mismo número de DNI", SweetAlertIcon.Warning);
                 return;
             }
 
@@ -40,11 +38,11 @@ namespace Blazor.Pages.MisClientes
             bool inserto = await clienteServicio.NuevoAsync(cliente);
             if (inserto)
             {
-                await Swal.FireAsync("Error", "El Cliente no se pudo Guardar", SweetAlertIcon.Error);
+                await Swal.FireAsync("Error", "El cliente no se pudo guardar", SweetAlertIcon.Error);
             }
             else
-            {                
-                await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
+            {
+                await Swal.FireAsync("Éxito", "Cliente guardado exitosamente", SweetAlertIcon.Success);
                 navigationManager.NavigateTo("/Clientes");
             }
         }
