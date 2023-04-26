@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Modelos\Modelos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Factura\" />
+  </ItemGroup>
+
 </Project>
