@@ -43,8 +43,8 @@ namespace Blazor.Pages.Facturacion
 					detalle.Total = detalle.Precio * detalle.Cantidad;
 					listaDetalleFactura.Add(detalle);
 					producto.Descripcion = string.Empty;
-					producto.Precio = "";
-					producto.Existencia = "";
+					producto.Precio = 0;
+					producto.Existencia = 0;
 					cantidad = 0;
 					codigoProducto = "0";
 
