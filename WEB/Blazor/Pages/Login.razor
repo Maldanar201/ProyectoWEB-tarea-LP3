@@ -1,25 +1,45 @@
 ﻿@page "/Login"
 @page "/Login/{MensajeError}"
 @attribute [AllowAnonymous]
-<h3>Inicio de Sesión</h3>
-
+<div style="text-align:center">
+    <!--agregando imagen de inicio de sesion-->
+    <img style="width:210px;" src="https://th.bing.com/th/id/R.76654c1ccf9a3d2be9f9894bac07a79b?rik=cwEn%2fe%2bQSwHWhQ&pid=ImgRaw&r=0"
+         alt="logo login" />
+    <br>
+    <br>
+<h3 style="font-size:2em">Inicio de Sesión</h3>
+    <br>
+</div>
+<!--si viene un error-->
 @if (MensajeError != null)
 {
-    <div class="text-danger">@MensajeError</div>
+    <div class="text-danger row justify-content-center align-items-center">@MensajeError</div>
 }
 
+<!--agregando formulario de inicio de desion. Cuando se ejecute este form, se ira  a la ruta  de  "action" que esta en el controller-->
 <form method="post" action="/autenticar/validar">
-    <div class="form-group">
-        <label>Usuario:</label>
-        <input type="text" name="CodigoUsuario" class="form-control col-sm-6 col-md-4" />
+   
+    <div class="col text-center">
+        <div class="row justify-content-center align-items-center" style="text-align:center">
+            <label style="font-size:1.5em">Usuario:</label>
+            <br>
+            <br>
+            <input type="text" name="CodigoUsuario" class="form-control col-sm-6 col-md-4" />
+        </div>
+        
+        <div class="row justify-content-center align-items-center" style="text-align:center">
+           
+            <Label style="font-size:1.5em">Contraseña:</Label>
+            <br>
+            <br>
+            <input type="password" name="Contrasena" class="form-control col-sm-6  col-md-4"/>
+        </div>
+        <br>
+        <button class="btn btn-info" style="font-size:1.5em">Ingresar</button>
     </div>
 
-    <div class="form-group">
-        <label>Contraseña:</label>
-        <input type="password" name="Contrasena" class="form-control col-sm-6 col-md-4" />
-    </div>
+    
 
-    <button class="btn btn-primary">Ingresar</button>
 </form>
 
 @code {
