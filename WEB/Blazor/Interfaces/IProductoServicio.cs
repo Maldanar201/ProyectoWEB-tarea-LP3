@@ -8,6 +8,6 @@ namespace Blazor.Interfaces
         Task<bool> NuevoAsync(Producto producto);
         Task<bool> ActualizarAsync(Producto producto);
         Task<bool> EliminarAsync(string codigo);
-        Task<IEnumerable<Producto>> GetListaAsync();
+        Task<IEnumerable<Producto>> GetLista();
     }
 }
