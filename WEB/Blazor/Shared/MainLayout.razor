@@ -11,15 +11,17 @@
         <div class="top-row px-4">
             <AuthorizeView>
                 <Authorized>
-                    <span class="ml-md-auto" style="color:mediumspringgreen">
-                        Usuario Conectado: @context.User.Claims.First().Value
-                        <a href="/Salir">Cerrar Sesión</a>
+                    <span class="ml-md-auto" style="color:green">
+                        En línea: @context.User.Claims.First().Value
+                        <a href="/Salir">
+                            <div>
+                                <label>Cerrar Sesión</label>
+                                <img style ="width:30px;" src="https://cdn-icons-png.flaticon.com/512/4400/4400828.png"
+                                     alt="imagen cerrar sesión"/>
+                            </div>
+                        </a>
                     </span>
                 </Authorized>
-                <NotAuthorized>
-                   
-                </NotAuthorized>
-
             </AuthorizeView>
         </div>
 

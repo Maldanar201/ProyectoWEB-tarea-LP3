@@ -12,7 +12,7 @@
 					</div>
 
 					<div class="col-sm-1">
-						<b>Buscar:</b>
+						<br>
 						<input type="submit" class="btn btn-primary" value="Buscar" @onclick="@BuscarCliente" />
 					</div>
 					<div class="col-sm-6">
@@ -35,7 +35,7 @@
 					</div>
 
 					<div class="col-sm-1">
-						<b>Buscar:</b>
+						<br>
 						<input type="submit" class="btn btn-primary" value="Buscar" @onclick="@BuscarProducto" />
 					</div>
 
@@ -50,7 +50,7 @@
 					</div>
 
 					<div class="col-sm-1">
-						<b>Agregar:</b>
+						<br>
 						<input type="submit" class="btn btn-primary" value="Agregar" @onclick="@AgregarProducto" />
 					</div>
 				</div>
@@ -70,13 +70,23 @@
 				<tbody>
 					@foreach (var det in listaDetalleFactura)
 					{
-						<tr>
-							<td>@det.CodigoProducto</td>
-							<td>@det.Descripcion</td>
-							<td>@det.Cantidad</td>
-							<td>@det.Precio</td>
-							<td>@det.Total</td>
-						</tr>
+						<!--si se da  click en registrar, se vacía la tabla-->
+						@if (@registrado==true)
+						{
+							<tr>
+							</tr>
+						}
+						else
+						{
+							<tr>
+								<td>@det.CodigoProducto</td>
+								<td>@det.Descripcion</td>
+								<td>@det.Cantidad</td>
+								<td>@det.Precio</td>
+								<td>@det.Total</td>
+							</tr>
+						}
+						
 					}
 				</tbody>
 			</table>
@@ -111,7 +121,8 @@
 				</div>
 			</div>
 			<div align="right">
-				<input type="submit" class="btn btn-primary" value="Guardar Factura" @onclick="Guardar" />
+				<input type="submit" class="btn btn-primary" value="Registrar" @onclick="Guardar" />
+				<input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
 			</div>
 
 		</EditForm>
