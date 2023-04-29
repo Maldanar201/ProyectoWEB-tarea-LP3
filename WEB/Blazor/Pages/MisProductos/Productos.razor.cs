@@ -6,13 +6,13 @@ namespace Blazor.Pages.MisProductos
 {
     public partial class Productos
     {
-        [Inject] IProductoServicio productosServicvios { get; set; }
+        [Inject] IProductoServicio productosServicios { get; set; }
 
         IEnumerable<Producto> listaProductos { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            listaProductos = await productosServicvios.GetLista();
+            listaProductos = await productosServicios.GetListaAsync();
         }
     }
 }

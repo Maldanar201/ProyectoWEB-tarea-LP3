@@ -8,7 +8,7 @@ namespace Blazor.Pages.MisProductos
 {
     public partial class NuevoProducto
     {
-        [Inject] private IProductoServicio productosServicvios { get; set; }
+        [Inject] private IProductoServicio productosServicios { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private SweetAlertService sweetAlertService { get; set; }
 
@@ -37,7 +37,7 @@ namespace Blazor.Pages.MisProductos
 
             Producto prodExistente = new Producto();
 
-            prodExistente = await productosServicvios.GetPorCodigoAsync(prod.Codigo);
+            prodExistente = await productosServicios.GetPorCodigoAsync(prod.Codigo);
 
             if (prodExistente != null)
             {
@@ -48,7 +48,7 @@ namespace Blazor.Pages.MisProductos
                 }
             }
 
-            bool inserto = await productosServicvios.NuevoAsync(prod);
+            bool inserto = await productosServicios.NuevoAsync(prod);
 
             if (inserto)
             {

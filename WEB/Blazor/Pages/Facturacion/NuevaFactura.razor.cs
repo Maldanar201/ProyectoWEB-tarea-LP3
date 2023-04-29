@@ -1,5 +1,6 @@
 ﻿using Blazor.Interfaces;
 using CurrieTechnologies.Razor.SweetAlert2;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Modelos;
@@ -10,18 +11,25 @@ namespace Blazor.Pages.Facturacion
     {
         [Inject] private IFacturaServicio facturaServicio { get; set; }
         [Inject] private IDetalleFacturaServicio detalleFacturaServicio { get; set; }
-        [Inject] private IProductoServicio productoServicio { get; set; }
+		[Inject] private IClienteServicio clienteServicio { get; set; }
+		[Inject] private IProductoServicio productoServicio { get; set; }
         [Inject] private SweetAlertService Swal { get; set; }
         [Inject] NavigationManager _navigationManager { get; set; }
         [Inject] private IHttpContextAccessor httpContextAccessor { get; set; }
 
         public Factura factura = new Factura();
         private List<DetalleFactura> listaDetalleFactura = new List<DetalleFactura>();
-        private Producto producto = new Producto();
+		private Cliente cliente = new Cliente();
+		private Producto producto = new Producto();
         private int cantidad { get; set; }
         private string codigoProducto { get; set; }
+		
+		private async void BuscarCliente() 
+		{
+			cliente = await clienteServicio.GetPorIdentidadAsync(factura.IdentidadCliente);
+		}
 
-        protected override async Task OnInitializedAsync()
+		protected override async Task OnInitializedAsync()
         {
             factura.Fecha = DateTime.Now;
         }
@@ -31,6 +39,7 @@ namespace Blazor.Pages.Facturacion
         }
         protected async Task AgregarProducto(MouseEventArgs args)
         {
+            decimal Descuento = factura.Descuento;
             if (args.Detail != 0)
             {
                 if (producto != null)
@@ -46,11 +55,11 @@ namespace Blazor.Pages.Facturacion
                     producto.Precio = 0;
                     producto.Existencia = 0;
                     cantidad = 0;
-                    codigoProducto = "0";
+                    codigoProducto = "0";                    
 
                     factura.SubTotal = factura.SubTotal + detalle.Total;
                     factura.ISV = factura.SubTotal * 0.15M;
-                    factura.Total = factura.SubTotal + factura.ISV - factura.Descuento;
+                    factura.Total = factura.SubTotal + factura.ISV - Descuento;
                 }
             }
         }
@@ -65,13 +74,19 @@ namespace Blazor.Pages.Facturacion
                 {
                     item.IdFactura = idFactura;
                     await detalleFacturaServicio.Nuevo(item);
+
                 }
-                await Swal.FireAsync("Felicidades", "Factura guardada con exito", SweetAlertIcon.Success);
+                factura.IdentidadCliente = string.Empty;
+                cliente.Nombre = string.Empty;
+
+				await Swal.FireAsync("Felicidades", "Factura guardada con exito", SweetAlertIcon.Success);
             }
             else
             {
                 await Swal.FireAsync("Error", "No se pudo guardar la factura", SweetAlertIcon.Error);
             }
-        }
+
+			
+		}
     }
 }

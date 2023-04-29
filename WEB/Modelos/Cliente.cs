@@ -18,22 +18,6 @@ namespace Modelos
         public string Correo { get; set; }
         public string Direccion { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public bool EstaActivo { get; set; }
-
-        public Cliente()
-        {
-
-        }
-
-        public Cliente(string identidad, string nombre, string telefono, string correo, string direccion, DateTime fechaCreacion, bool estaActivo)
-        {
-            Identidad = identidad;
-            Nombre = nombre;
-            Telefono = telefono;
-            Correo = correo;
-            Direccion = direccion;
-            FechaCreacion = fechaCreacion;
-            EstaActivo = estaActivo;
-        }
+        public bool EstaActivo { get; set; }       
     }
 }

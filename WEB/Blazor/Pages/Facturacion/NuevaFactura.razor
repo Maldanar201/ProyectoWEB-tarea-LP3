@@ -8,7 +8,16 @@
 				<div class="form-group row">
 					<div class="col-sm-2">
 						<b>Identidad Cliente:</b>
-						<InputText id="IdentidadCliente" class="form-control" @bind-Value="factura.IdentidadCliente" />
+						<InputText id="IdentidadCliente" class="form-control" @bind-Value="factura.IdentidadCliente"  />						
+					</div>
+
+					<div class="col-sm-1">
+						<b>Buscar:</b>
+						<input type="submit" class="btn btn-primary" value="Buscar" @onclick="@BuscarCliente" />
+					</div>
+					<div class="col-sm-6">
+						<b>Nombre Cliente:</b>
+						<InputText readonly id="Nombre Cliente" class="form-control" @bind-Value="@cliente.Nombre" />
 					</div>
 
 					<div class="col-sm-2">

@@ -26,21 +26,12 @@ namespace Blazor.Servicios
         {
             return await productoRepositorios.EliminarAsync(codigo);
         }
-
-        public Task<IEnumerable<Producto>> GetLista()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public async Task<IEnumerable<Producto>> GetListaAsync()
         {
             return await productoRepositorios.GetListaAsync();
-        }
-
-        public Task<Producto> GetPorCodigo(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+        }        
 
         public async Task<Producto> GetPorCodigoAsync(string codigo)
         {

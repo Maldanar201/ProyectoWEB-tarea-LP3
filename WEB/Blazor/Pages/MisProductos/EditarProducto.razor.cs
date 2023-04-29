@@ -8,7 +8,7 @@ namespace Blazor.Pages.MisProductos
 {
     public partial class EditarProducto
     {
-        [Inject] private IProductoServicio productosServicvios { get; set; }
+        [Inject] private IProductoServicio productosServicios { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private SweetAlertService sweetAlertService { get; set; }
 
@@ -20,7 +20,7 @@ namespace Blazor.Pages.MisProductos
         {
             if (!string.IsNullOrEmpty(Codigo))
             {
-                prod = await productosServicvios.GetPorCodigoAsync(Codigo);
+                prod = await productosServicios.GetPorCodigoAsync(Codigo);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Blazor.Pages.MisProductos
                 return;
             }
 
-            bool edito = await productosServicvios.ActualizarAsync(prod);
+            bool edito = await productosServicios.ActualizarAsync(prod);
 
             if (edito)
             {
@@ -73,7 +73,7 @@ namespace Blazor.Pages.MisProductos
 
             if (!string.IsNullOrEmpty(result.Value))
             {
-                bool elimino = await productosServicvios.EliminarAsync(prod.Codigo);
+                bool elimino = await productosServicios.EliminarAsync(prod.Codigo);
 
                 if (elimino)
                 {
